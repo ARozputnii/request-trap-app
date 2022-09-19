@@ -2,7 +2,8 @@
   "name": "request-trap-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
     "start-dev": "nodemon app",
     "start": "node app"
@@ -26,7 +27,10 @@
     "nodemon": "^2.0.20"
   },
   "dependencies": {
-    "express": "^4.18.1"
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "mongodb": "4.9",
+    "mongoose": "^6.6.1"
   },
   "engines": {
     "node": "18.x"
