@@ -1,21 +1,27 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import * as dotenv from 'dotenv'
 import router from './router.js'
-
-dotenv.config()
+import { createServer } from 'http'
+import { Server } from 'socket.io'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+import { PORT, DB_URL } from './config/dotenv.js'
 
 const app = express()
-const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster-test.5s1fa.mongodb.net/?retryWrites=true&w=majority`
-const PORT = process.env.PORT
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
+const server = createServer(app)
+export const io = new Server(server, {})
+
+app.use(express.static(__dirname + '/public'))
 app.use(express.json())
 app.use(router)
 
 async function startApp () {
   try {
     await mongoose.connect(DB_URL)
-    app.listen(PORT, () => { console.log(`App listening on port ${PORT}\n Press Ctrl+C to quit.`) })
+    server.listen(PORT, () => { console.log(`App listening on port ${PORT}\n Press Ctrl+C to quit.`) })
   } catch (e) {
     console.error(e)
   }
