@@ -5,8 +5,9 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start-dev": "nodemon app",
-    "start": "node app"
+    "start-dev": "NODE_ENV=dev nodemon app",
+    "start": "NODE_ENV=dev node app",
+    "test": "NODE_ENV=test mocha tests/controllers/**/*.js --skip-"
   },
   "repository": {
     "type": "git",
@@ -19,11 +20,18 @@
   },
   "homepage": "https://github.com/ARozputnii/request-trap-app#readme",
   "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
     "eslint": "^8.23.1",
     "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-chai-friendly": "^0.7.2",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-mocha": "^10.1.0",
     "eslint-plugin-n": "^15.2.5",
     "eslint-plugin-promise": "^6.0.1",
+    "factory-girl": "^5.0.4",
+    "mocha": "^10.0.0",
     "nodemon": "^2.0.20"
   },
   "dependencies": {

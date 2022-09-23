@@ -5,10 +5,8 @@ class RequestService {
     return await Request.find()
   }
 
-  async findOne (id) {
-    const request = await Request.findById(id)
-
-    return request
+  async findByParams (params) {
+    return await Request.find({ query_params: params })
   }
 
   async create (params) {

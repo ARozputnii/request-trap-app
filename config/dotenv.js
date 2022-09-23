@@ -1,8 +1,12 @@
 import * as dotenv from 'dotenv'
 
-dotenv.config()
+if (process.env.NODE_ENV === 'dev') {
+  dotenv.config({ path: '.env' })
+} else {
+  dotenv.config({ path: '.env.test' })
+}
 
 const PORT = process.env.PORT
-const DB_URL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster-test.5s1fa.mongodb.net/?retryWrites=true&w=majority`
+const DB_URL = process.env.DB_URL
 
 export { PORT, DB_URL }

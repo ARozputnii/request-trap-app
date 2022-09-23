@@ -26,7 +26,6 @@ function buildRequest (request) {
                      aria-labelledby="flush-headingOne"
                      data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
-                        <a href="/${request._id}/requests" class="mb-2 btn btn-sm btn-outline-dark">Show</a>
                         <p>id: <code>${request._id}</code></p>
                         <p>request_date: <code>${request.request_date}</code></p>
                         <p>remote_ip: <code>${request.remote_ip}</code></p>
